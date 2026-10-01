@@ -70,6 +70,18 @@ let message = TransfertMessage.SUCCES
 
 displayText(`Message : ${message}`)
 
+// Bonus
+enum Note {
+  NOTE1 = 1,
+  NOTE2,
+  NOTE3,
+  NOTE4,
+  NOTE5,
+  NSP = 'Ne se prononce pas'
+}
+
+displayText(`Note: ${Note.NSP}`)
+
 /*
 eslint
   @typescript-eslint/no-unused-vars: "off"
