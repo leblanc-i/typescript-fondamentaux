@@ -21,19 +21,25 @@ init()
 
 type Connexion = [string, string, string, number, string, string]
 
+enum Protocol {
+  HTTP = 'http',
+  HTTPS = 'https',
+  FTP = 'ftp',
+}
+
 // 🐶 Créer une variable 'google' qui contiendra les infos de connexion à google
 // https google.com 443
 
-let google: Connexion = ['Google', 'https', 'google.com', 423, '', '']
+let google: Connexion = ['Google', Protocol.HTTPS, 'google.com', 423, '', '']
 
 // Affiche le resultat à l'ecran avec le code
 displayText(`Connexion ${google[0]} : ${google[1]}://${google[2]}:${google[3]} `)
 
 // 🐶 créer 3 autres connexions de ton choix et affiche le resultat à l'écran
 
-const miscrosoft: Connexion = ['Microsoft', 'https', 'outlook.com', 422, '', '']
-const brave: Connexion = ['Brave', 'https', 'brave.com', 420, '', '']
-const explorer: Connexion = ['Explorer', 'https', 'explorer.com', 421, '', '']
+const miscrosoft: Connexion = ['Microsoft', Protocol.HTTPS, 'outlook.com', 422, '', '']
+const brave: Connexion = ['Brave', Protocol.FTP, 'brave.com', 420, '', '']
+const explorer: Connexion = ['Explorer', Protocol.HTTPS, 'explorer.com', 421, '', '']
 
 displayText(`Connexion ${miscrosoft[0]} : ${miscrosoft[1]}://${miscrosoft[2]}:${miscrosoft[3]} `)
 displayText(`Connexion ${brave[0]} : ${brave[1]}://${brave[2]}:${brave[3]} `)
@@ -44,8 +50,10 @@ displayText(`Connexion ${explorer[0]} : ${explorer[1]}://${explorer[2]}:${explor
 
 let connections: Connexion[] = []
 connections.push(google, miscrosoft, brave, explorer)
-
 displayText(`Il y a ${connections.length} connexions`)
+
+const [, gmailProtocol, gmailHostname ] = google
+displayText(`Le protocole de google est ${gmailProtocol} hostname ${gmailHostname}`)
 
 /*
 eslint
