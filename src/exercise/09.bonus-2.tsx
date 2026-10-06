@@ -22,6 +22,7 @@ interface Runnable {
 interface Drinkable {
   drink: () => void
 }
+interface Mammal extends Runnable, Drinkable {}
 
 class Animal implements IName {
   // name: string | undefined
@@ -39,29 +40,29 @@ class Animal implements IName {
   }
 }
 
-class Cat extends Animal implements Runnable, Drinkable {
+class Cat extends Animal implements Mammal {
   constructor(name: string) {
     super(name, 4, false)
   }
   run() {
-    console.log(`${this.name}: Je cours`)
+    console.log(`Je cours`)
   }
   drink() {
-    console.log(`${this.name}: Je bois`)
+    console.log(`Je bois`)
   }
 }
 
 // 🐶 Implemente correctement la classe 'Dog'
 // ⛏️ Décommente la classe 'dog' ci-dessous et constate le message d'erreur
-class Dog extends Animal implements Runnable, Drinkable {
+class Dog extends Animal implements Mammal {
   constructor(name: string) {
     super(name, 4, false)
   }
   run() {
-    console.log(`${this.name}: Je cours`)
+    console.log(`Je cours`)
   }
   drink() {
-    console.log(`${this.name}: Je bois`)
+    console.log(`Je bois`)
   }
 }
 
@@ -98,6 +99,19 @@ displayText(`Nom du chien ${chien.printName()}`)
 const fish = new Fish('Nemo')
 fish.swim()
 displayText(`Le Nom du poisson ${fish.printName()}`)
+
+// 🐶 Dans cette exercice créé une fonction `doSomeThingWithDrinkers` qui prend en
+// paramètre un `drinker` . appelle ensuite
+
+// - `displayText(Je bois)`
+// - `drinker.drinker()`
+
+const doSomeThingWithDrinkers = (drinker: Drinkable) => {
+    displayText('Je bois')
+    drinker.drink()
+}
+doSomeThingWithDrinkers(tigrou)
+doSomeThingWithDrinkers(chien)
 
 /*eslint
   @typescript-eslint/no-unused-vars: "off"

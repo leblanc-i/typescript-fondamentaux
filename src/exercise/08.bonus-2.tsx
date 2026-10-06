@@ -34,6 +34,27 @@ displayText(`${sum(2, 3)}`)
 
 // 🚀 N'oublie pas les bonus
 
+let carre: Function
+carre = (base: number): number => {
+    return base * base
+}
+
+function carreExp(cb: Function, base: number) {
+    return `${base} au carré ${cb(base)}`
+}
+displayText(`${carreExp(carre, 5)}`)
+
+
+let cube: Function
+cube = (base: number): number => {
+    return base * base * base
+}
+
+function cubeExp(cb: Function, base: number): string {
+    return `${base} au cube ${cb(base)}`
+}
+displayText(`${cubeExp(cube, 5)}`)
+
 /*
 eslint
   @typescript-eslint/no-unused-vars: "off"

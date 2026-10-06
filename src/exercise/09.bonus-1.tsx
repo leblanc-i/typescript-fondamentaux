@@ -22,6 +22,7 @@ interface Runnable {
 interface Drinkable {
   drink: () => void
 }
+interface Mammal extends Runnable, Drinkable {}
 
 class Animal implements IName {
   // name: string | undefined
@@ -39,7 +40,7 @@ class Animal implements IName {
   }
 }
 
-class Cat extends Animal implements Runnable, Drinkable {
+class Cat extends Animal implements Mammal {
   constructor(name: string) {
     super(name, 4, false)
   }
@@ -53,7 +54,7 @@ class Cat extends Animal implements Runnable, Drinkable {
 
 // 🐶 Implemente correctement la classe 'Dog'
 // ⛏️ Décommente la classe 'dog' ci-dessous et constate le message d'erreur
-class Dog extends Animal implements Runnable, Drinkable {
+class Dog extends Animal implements Mammal {
   constructor(name: string) {
     super(name, 4, false)
   }
