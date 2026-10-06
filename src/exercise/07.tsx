@@ -11,12 +11,12 @@ init()
 // ✔️ Début de l'exercice
 
 // 🐶 Modifile le type `car` avec toutes les propriétés demandée par 👨‍✈️ Hugo
-type car = any
+type car = {name: string, maxSpeed?: number, mass?: number}
 // 🐶 Complete la fonction `kineticEnergy` avec toutes les propriétés demandée par 👨‍✈️ Hugo
 // Fonction prenant en entrée 2 parametre
 // - speed un nombre obligatoire
 // - mass un nombre optionel
-function kineticEnergy() {
+function kineticEnergy(speed: number, mass?: number | undefined) {
   // calcul l'energie avec cette formule
   // Energie (en Joule) = 0.5 x masse x vitesse ²
   // utile Math pour le calcul au carré
@@ -24,7 +24,7 @@ function kineticEnergy() {
   //
   // ⛏️ décommente la ligne ci-dessous et met la formule dans result
   // il s'agit d'une ternaire qui permet de retouner soit 'null' si 'mass' est 'null', soit un 'objet' avec la propriété 'result'
-  //return mass ? {result: _____ } : null
+  return mass ? {result: 0.5 * mass * Math.sqrt(speed)} : null
 }
 
 let tesla: car
@@ -32,24 +32,24 @@ tesla = {name: 'tesla', mass: 1850, maxSpeed: 78}
 
 let teslaEnergie
 // ⛏️ décommente la ligne ci-dessous et appelle correctement la fonction 'kineticEnergy' avec 'tesla'
-// teslaEnergie = kineticEnergy(.....)
-displayText()
-// ⛏️ décommente sans modifier
-//`energie cinetique de ${tesla.name} est ${teslaEnergie.result} joules`,
 
+teslaEnergie = kineticEnergy(tesla.maxSpeed!, tesla.mass)!
+displayText(`energie cinetique de ${tesla.name} est ${teslaEnergie.result} joules`)
+
+// ⛏️ décommente sans modifier
 // 🐶 le type unknown permet de dire qu'on ne sait pas ce que contiendra la variable
 // nous les utiliseront ici pour pouvoir tester cast de type
 let unknowCarSpeed: unknown = 150
 let unknowCarMass: unknown = 2000
 
 // ⛏️ décommente la ligne ci-dessous et appelle correctement la fonction 'kineticEnergy' avec 'unknowCarSpeed' et 'unknowCarMass'
-// unknowCarEnergie = kineticEnergy(.....)
 let unknowCarEnergie
+unknowCarEnergie = kineticEnergy(unknowCarSpeed as number, unknowCarMass as number)!
 
 // ⛏️ décommente la ligne ci-dessous
-// displayText(
-//   `energie cinetique est ${unknowCarEnergie.result} joules`
-//   )
+displayText(
+ `energie cinetique est ${unknowCarEnergie.result} joules`
+)
 
 /*eslint
   @typescript-eslint/no-unused-vars: "off"
